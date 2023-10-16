@@ -69,7 +69,15 @@ class AdminPanelProvider extends PanelProvider
                     ->visible(fn () => app()->environment(['local', 'testing', 'hml', 'homologacao', 'staging', 'development']))
                     ->showBorder(false)
                     ->visible(true),
-                FilamentExceptionsPlugin::make()
+                FilamentExceptionsPlugin::make(),
+                    \Awcodes\Curator\CuratorPlugin::make()
+                ->label('Media')
+                ->pluralLabel('Media')
+                ->navigationIcon('heroicon-o-photo')
+                ->navigationGroup('Content')
+                ->navigationSort(3)
+                ->navigationCountBadge()
+              
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
